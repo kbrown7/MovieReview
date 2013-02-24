@@ -16,12 +16,7 @@
 	<div id="header" class="row">
 		<div class="col c12 aligncenter">
 			<h1><a class="red" href="index.html">Movie Ratings</a></h1>
-			<p class="slogan">Genre</p>
-            <form method="post" action="genre.php">
-            <label for="search">Search:</label>
-			<input type="text" id="search" name="search" size="40" </p>
-			<input type="submit" value="Go" name="submit" /></p>
-            
+			<p class="slogan">MPAA Ratings</p>
 		</div>
 	</div>
 		
@@ -39,58 +34,36 @@
 		</div>
 		
 		<center><div>
-			<h2>Genres</h2>
-			<p></p>
-            <TABLE  BORDER="2" align="center" width="50%" cellpadding="4" cellspacing="3">
+			<h2>Search Results</h2>
+			 <?php
+                $search =  "This page displays search results for " . $_POST['search'];
+				echo $search;
+			?>	
+			<TABLE  BORDER="2" align="center" width="75%" cellpadding="4" cellspacing="3">
    				<TR align="center">
-      				<TH COLSPAN="2">
-         				<H3><BR>Movie Genres</H3>
-      				</TH>
+      				
    				</TR>
       				<TH align="center">Movie</TH>
-      				<TH align="center">Genre</TH>
+      				<TH align="center">MPAA Rating</TH>
                 <?php
                 include "db_connect.php";
-				
-				if (isset($_POST['search'])){
-					
-					$searchterm = mysql_real_escape_string($_POST['search']);
-					$query = "SELECT movie_title,genre FROM movie WHERE genre LIKE '%$searchterm%'";
-					$result = mysqli_query($db, $query); 
-					
-					while($row = mysqli_fetch_array($result)) {
-						$movie = $row['movie_title'];
-  						$genre = $row['genre'];	
-						echo "<TR align=\"center\">";
-						echo "<TD>".$movie."</TD>";
-						echo "<TD>".$genre."</TD>";
-						echo "</TR>";
-					}
-					
-				}//end if
-				
-				
-				
-				
-				else{
-                
-				$query = "SELECT movie_title,genre FROM movie GROUP BY genre";
-                
-				$result = mysqli_query($db, $query);
-				
+                 if (isset($_POST['search']))
+				{
+				$searchterm = mysqli_real_escape_string($db, trim($_POST['search']));
+				$query = "SELECT movie_title, MPAA FROM movie where MPAA LIKE '%$searchterm%'";
+               	$result = mysqli_query($db, $query);
 				while($row = mysqli_fetch_array($result)) {
 					$movie = $row['movie_title'];
-  					$genre = $row['genre'];	
+  					$mpaa = $row['MPAA'];		
 					echo "<TR align=\"center\">";
 					echo "<TD>".$movie."</TD>";
-					echo "<TD>".$genre."</TD>";
+					echo "<TD>".$mpaa."</TD>";
 					echo "</TR>";
 				}
-				
-				}//end else
-				
+				}
+
+							
                 ?>
-                
 			</TABLE>
             
             
@@ -116,3 +89,4 @@
 </div>
 </body>
 </html>
+
