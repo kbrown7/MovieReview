@@ -16,7 +16,7 @@
 	<div id="header" class="row">
 		<div class="col c12 aligncenter">
 			<h1><a class="red" href="index.html">Movie Ratings</a></h1>
-			<p class="slogan">Genre</p>
+			<p class="slogan">Actors</p>
 		</div>
 	</div>
 		
@@ -34,47 +34,38 @@
 		</div>
 		
 		<center><div>
-			<h2>Genres</h2>
-			<p>This page displays each movie according to genre</p>
-            <TABLE  BORDER="2" align="center" width="50%" cellpadding="4" cellspacing="3">
+			<h2>Search Results</h2>
+			 <?php
+                $search =  "This page displays search results for " . $_POST['search'];
+				echo $search;
+			?>	
+			<TABLE  BORDER="2" align="center" width="75%" cellpadding="4" cellspacing="3">
    				<TR align="center">
-      				<TH COLSPAN="2">
-         				<H3><BR>Movie Genres</H3>
-      				</TH>
+      				
    				</TR>
       				<TH align="center">Movie</TH>
-      				<TH align="center">Genre</TH>
+      				<TH align="center">Lead Actor</TH>
+					<TH align="center">Lead Actress</TH>
                 <?php
                 include "db_connect.php";
-                
-				$query = "SELECT movie_title,genre FROM movie GROUP BY genre";
-                
-				$result = mysqli_query($db, $query);
-				
+                 if (isset($_POST['search']))
+				{
+				$searchterm = mysqli_real_escape_string($db, trim($_POST['search']));
+				$query = "SELECT movie_title,lead_actor,lead_actress FROM movie where lead_actor LIKE '%$searchterm%' OR lead_actress LIKE '%$searchterm%'";
+               	$result = mysqli_query($db, $query);
 				while($row = mysqli_fetch_array($result)) {
 					$movie = $row['movie_title'];
-  					$genre = $row['genre'];	
+  					$actor = $row['lead_actor'];	
+					$actress = $row['lead_actress'];	
 					echo "<TR align=\"center\">";
 					echo "<TD>".$movie."</TD>";
-					echo "<TD>".$genre."</TD>";
+					echo "<TD>".$actor."</TD>";
+					echo "<TD>".$actress."</TD>";
 					echo "</TR>";
 				}
-				
-				/*
-   				<TR align="center">
-      				<TD>Data 1</TD>
-      				<TD>Data 2</TD>
-   				</TR>
-   				<TR align="center">
-      				<TD>Data 3</TD>
-      				<TD>Data 4</TD>
-   				</TR>
-   				<TR align="center">
-      				<TD>Data 5</TD>
-      				<TD>Data 6</TD>
-   				</TR>
-                */
-				
+				}
+
+							
                 ?>
 			</TABLE>
             

@@ -16,7 +16,12 @@
 	<div id="header" class="row">
 		<div class="col c12 aligncenter">
 			<h1><a class="red" href="index.html">Movie Ratings</a></h1>
-			<p class="slogan">Genre</p>
+			<form method="post" action="actorsResults.php">
+			<p class="slogan">Lead Actors & Actresses</p>
+		<label for="search">Search:</label>
+		<input type="text" id="search" name="search" size="40" </p>
+		<input type="submit" value="Go" name="submit" /></p>
+		
 		</div>
 	</div>
 		
@@ -32,72 +37,76 @@
 				<li><a href="mpaa.html">MPAA Reviews</a></li>
 			</ul>
 		</div>
+						
+		<div class="col c5 alignjustify">
 		
-		<center><div>
-			<h2>Genres</h2>
-			<p>This page displays each movie according to genre</p>
-            <TABLE  BORDER="2" align="center" width="50%" cellpadding="4" cellspacing="3">
+			<h2>Movies by Actors</h2>
+			<TABLE  BORDER="2" align="center" width="100%" cellpadding="4" cellspacing="3">
    				<TR align="center">
       				<TH COLSPAN="2">
-         				<H3><BR>Movie Genres</H3>
+         				<H3><BR>Actors</H3>
       				</TH>
    				</TR>
       				<TH align="center">Movie</TH>
-      				<TH align="center">Genre</TH>
+      				<TH align="center">Lead Actor</TH>
                 <?php
                 include "db_connect.php";
                 
-				$query = "SELECT movie_title,genre FROM movie GROUP BY genre";
+				$query = "SELECT movie_title, lead_actor FROM movie ORDER BY REVERSE(SUBSTRING_INDEX(REVERSE(lead_actor),' ',1))";
                 
 				$result = mysqli_query($db, $query);
 				
 				while($row = mysqli_fetch_array($result)) {
 					$movie = $row['movie_title'];
-  					$genre = $row['genre'];	
+  					$actor = $row['lead_actor'];	
 					echo "<TR align=\"center\">";
 					echo "<TD>".$movie."</TD>";
-					echo "<TD>".$genre."</TD>";
+					echo "<TD>".$actor."</TD>";
 					echo "</TR>";
 				}
 				
-				/*
-   				<TR align="center">
-      				<TD>Data 1</TD>
-      				<TD>Data 2</TD>
-   				</TR>
-   				<TR align="center">
-      				<TD>Data 3</TD>
-      				<TD>Data 4</TD>
-   				</TR>
-   				<TR align="center">
-      				<TD>Data 5</TD>
-      				<TD>Data 6</TD>
-   				</TR>
-                */
+
 				
                 ?>
 			</TABLE>
-            
-            
-		</div></center>
-        
-        
+			</div>
 
 		<div class="col c5 alignjustify">
-			
-            
-            
+			<h2>Movies by Actresses</h2>
+			<TABLE  BORDER="2" align="center" width="100%" cellpadding="4" cellspacing="3">
+   				<TR align="center">
+      				<TH COLSPAN="2">
+         				<H3><BR>Actresses</H3>
+      				</TH>
+   				</TR>
+      				<TH align="center">Movie</TH>
+      				<TH align="center">Lead Actress</TH>
+                <?php
+                include "db_connect.php";
+                
+				$query = "SELECT movie_title, lead_actress FROM movie ORDER BY REVERSE(SUBSTRING_INDEX(REVERSE(lead_actress),' ',1))";
+               	$result = mysqli_query($db, $query);
+				
+				while($row = mysqli_fetch_array($result)) {
+					$movie = $row['movie_title'];
+  					$actress = $row['lead_actress'];	
+					echo "<TR align=\"center\">";
+					echo "<TD>".$movie."</TD>";
+					echo "<TD>".$actress."</TD>";
+					echo "</TR>";
+				}
+				
+
+				
+                ?>
+			</TABLE>
 		</div>
 	</div>
 
 	<div class="row separator">
 	</div>
-	<div id="footer" class="row">
-	  <div class="col c12">
-			<p>&copy; 2012 Your Name<br />
-			<a href="http://andreasviklund.com/templates/freestyle/">Template design</a> by <a href="http://andreasviklund.com/">Andreas Viklund</a><br /><span class="smaller">Best hosted at <a href="https://www.svenskadomaner.se/?ref=mall&amp;ling=en" title="Svenska Domäner AB">www.svenskadomaner.se</a></span></p>
-		</div>
-	</div>
+
+	
 </div>
 </body>
 </html>
