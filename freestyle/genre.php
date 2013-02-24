@@ -17,6 +17,11 @@
 		<div class="col c12 aligncenter">
 			<h1><a class="red" href="index.html">Movie Ratings</a></h1>
 			<p class="slogan">Genre</p>
+            <form method="post" action="genre.php">
+            <label for="search">Search:</label>
+			<input type="text" id="search" name="search" size="40" </p>
+			<input type="submit" value="Go" name="submit" /></p>
+            
 		</div>
 	</div>
 		
@@ -35,7 +40,7 @@
 		
 		<center><div>
 			<h2>Genres</h2>
-			<p>This page displays each movie according to genre</p>
+			<p></p>
             <TABLE  BORDER="2" align="center" width="50%" cellpadding="4" cellspacing="3">
    				<TR align="center">
       				<TH COLSPAN="2">
@@ -46,6 +51,28 @@
       				<TH align="center">Genre</TH>
                 <?php
                 include "db_connect.php";
+				
+				if (isset($_POST['search'])){
+					
+					$searchterm = mysql_real_escape_string($_POST['search']);
+					$query = "SELECT movie_title,genre FROM movie WHERE genre LIKE '%$searchterm%'";
+					$result = mysqli_query($db, $query); 
+					
+					while($row = mysqli_fetch_array($result)) {
+						$movie = $row['movie_title'];
+  						$genre = $row['genre'];	
+						echo "<TR align=\"center\">";
+						echo "<TD>".$movie."</TD>";
+						echo "<TD>".$genre."</TD>";
+						echo "</TR>";
+					}
+					
+				}//end if
+				
+				
+				
+				
+				else{
                 
 				$query = "SELECT movie_title,genre FROM movie GROUP BY genre";
                 
@@ -60,22 +87,10 @@
 					echo "</TR>";
 				}
 				
-				/*
-   				<TR align="center">
-      				<TD>Data 1</TD>
-      				<TD>Data 2</TD>
-   				</TR>
-   				<TR align="center">
-      				<TD>Data 3</TD>
-      				<TD>Data 4</TD>
-   				</TR>
-   				<TR align="center">
-      				<TD>Data 5</TD>
-      				<TD>Data 6</TD>
-   				</TR>
-                */
+				}//end else
 				
                 ?>
+                
 			</TABLE>
             
             
