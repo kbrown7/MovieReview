@@ -33,7 +33,7 @@
 				<li><a href="topmovies.html">Top Movies</a></li>
 				<li><a href="actors.php">Actors</a></li>
 				<li><a href="genre.php">Genre</a></li>
-				<li><a href="ratings.html">New Ratings</a></li>
+				<li><a href="ratings.php">New Ratings</a></li>
 				<li><a href="mpaa.php">MPAA Ratings</a></li>
 			</ul>
 		</div>
