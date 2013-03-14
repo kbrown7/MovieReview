@@ -9,7 +9,7 @@
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
+GRANT ALL PRIVILEGES ON movies.* TO 'webuser'@'localhost' identified by '12345';
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `images` (
   `id` int(11) DEFAULT NULL,
   `link` varchar(300) DEFAULT NULL
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -77,6 +78,8 @@ CREATE TABLE IF NOT EXISTS `ratings` (
   `review` blob NOT NULL,
   `rating` int(11) NOT NULL,
   `review_date` date NOT NULL
+  PRIMARY KEY (`movie`)
+  FOREIGN KEY (`movie`) REFERENCES movie(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
