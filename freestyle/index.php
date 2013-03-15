@@ -7,6 +7,7 @@
 	<meta name="author" content="Your Name" />
 	<link href='http://fonts.googleapis.com/css?family=Economica' rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" type="text/css" href="freestyle.css" title="The Grid" media="all" />
+	
 <title>Movie Ratings</title>
 <style type="text/css">
 #apDiv1 {
@@ -26,12 +27,17 @@
 	<div id="header" class="row">
 		<div class="col c6">
 			<h1><a class="red" href="index.php">Movie Ratings</a></h1>
-			<p class="slogan"></p> Welcome!
+			<p class="slogan"></p> Welcome! <p>
+			<?php
+			if(isset($_COOKIE['login'])){
+			 echo "You are logged in as " . $_COOKIE['login'];
+			}
+			?>
 		</div>
 		
 		<div class="col c2">
 			<ul class="menu">
-				<li><a href="index.php">Home</a></li>
+				<li><a href="login.php">Login/Logout</a></li>
 				<li><a href="genre.php">Genre</a></li>
 			</ul>
 		</div>
