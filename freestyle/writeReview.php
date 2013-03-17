@@ -67,7 +67,7 @@
 					
                     <tr><td>Cover Image Link</td><td><input type="text" id="image" name="image" /></td></tr>
 					
-					<tr><td>&nbsp;</td><td><input type="submit" value="Sumbit" /></td></tr>
+					<tr><td>&nbsp;</td><td><input type="submit" value="Submit" /></td></tr>
 					
 					
 					
