@@ -28,7 +28,7 @@ GRANT ALL PRIVILEGES ON movies.* TO 'webuser'@'localhost' identified by '12345';
 
 CREATE TABLE IF NOT EXISTS `images` (
   `id` int(11) DEFAULT NULL,
-  `link` varchar(300) DEFAULT NULL
+  `link` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -77,8 +77,8 @@ CREATE TABLE IF NOT EXISTS `ratings` (
   `movie` int(11) NOT NULL,
   `review` blob NOT NULL,
   `rating` int(11) NOT NULL,
-  `review_date` date NOT NULL
-  PRIMARY KEY (`movie`)
+  `review_date` date NOT NULL,
+  PRIMARY KEY (`movie`),
   FOREIGN KEY (`movie`) REFERENCES movie(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
