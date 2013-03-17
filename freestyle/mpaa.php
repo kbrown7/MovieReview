@@ -7,7 +7,7 @@
 	<meta name="author" content="Your Name" />
 	<link href='http://fonts.googleapis.com/css?family=Economica' rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" type="text/css" href="freestyle.css" title="The Grid" media="all" />
-	<title>Movie Ratings</title>
+	<title>Movie MPAA Ratings</title>
 </head>
 
 <body class="wider orange">
@@ -15,7 +15,7 @@
 
 	<div id="header" class="row">
 		<div class="col c12 aligncenter">
-			<h1><a class="red" href="index.php">Movie Ratings</a></h1>
+			<h1><a class="red" href="index.php">Movie MPAA Ratings</a></h1>
 			<p class="slogan">MPAA Rating</p>
             <form method="post" action="mpaa.php">
             <label for="search">Search:</label>
@@ -30,7 +30,7 @@
 		<div class="col c2">
 			<ul class="menu">
 				<li><a href="index.php">Home</a></li>
-				<li><a href="topmovies.html">Top Movies</a></li>
+				<li><a href="topmovies.php">Top Movies</a></li>
 				<li><a href="actors.php">Actors</a></li>
 				<li><a href="genre.php">Genre</a></li>
 				<li><a href="ratings.php">New Ratings</a></li>

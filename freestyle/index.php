@@ -13,7 +13,7 @@
 #apDiv1 {
 	position:absolute;
 	left:920px;
-	top:320px;
+	top:350px;
 	width:197px;
 	height:259px;
 	z-index:1;
@@ -44,7 +44,7 @@
 
 		<div class="col c2">
 			<ul class="menu">
-				<li><a href="topmovies.html">Top Movies</a></li>
+				<li><a href="topmovies.php">Top Movies</a></li>
 				<li><a href="ratings.php">New Reviews</a></li>
 			</ul>
 		</div>

@@ -7,7 +7,7 @@
 	<meta name="author" content="Your Name" />
 	<link href='http://fonts.googleapis.com/css?family=Economica' rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" type="text/css" href="freestyle.css" title="The Grid" media="all" />
-	<title>Movie Ratings</title>
+	<title>Top Movies</title>
 </head>
 
 <body class="wider orange">
@@ -15,13 +15,12 @@
 
 	<div id="header" class="row">
 		<div class="col c12 aligncenter">
-			<h1><a class="red" href="index.php">Movie Ratings</a></h1>
-			<p class="slogan">Genre</p>
-            <form method="post" action="genre.php">
+			<h1><a class="red" href="index.php">Top Movies</a></h1>
+			<p class="slogan">Movie Ratings</p>
+			<form method="post" action="topmovies.php">
             <label for="search">Search:</label>
-			<input type="text" id="search" name="search" size="40" </p>
+			<input type="text" id="search" name="search" size="1" </p>
 			<input type="submit" value="Go" name="submit" /></p>
-            
 		</div>
 	</div>
 		
@@ -37,33 +36,33 @@
 				<li><a href="mpaa.php">MPAA Ratings</a></li>
 			</ul>
 		</div>
-		
-		<center><div>
-			<h2>Genres</h2>
+	
+			<center><div>
+			<h2>Top Movies</h2>
 			<p></p>
             <TABLE  BORDER="2" align="center" width="50%" cellpadding="4" cellspacing="3">
    				<TR align="center">
       				<TH COLSPAN="2">
-         				<H3><BR>Movie Genres</H3>
+         				<H3><BR>Movie Ratings</H3>
       				</TH>
    				</TR>
       				<TH align="center">Movie</TH>
-      				<TH align="center">Genre</TH>
+      				<TH align="center">Rating</TH>
                 <?php
                 include "db_connect.php";
 				
 				if (isset($_POST['search'])){
 					
 					$searchterm = mysql_real_escape_string($_POST['search']);
-					$query = "SELECT movie_title,genre FROM movie WHERE genre LIKE '%$searchterm%'";
+					$query = "SELECT m.movie_title, r.rating FROM movie AS m INNER JOIN ratings AS r ON m.id = r.movie WHERE r.rating LIKE '$searchterm' ORDER BY r.rating DESC";
 					$result = mysqli_query($db, $query); 
 					
 					while($row = mysqli_fetch_array($result)) {
 						$movie = $row['movie_title'];
-  						$genre = $row['genre'];	
+  						$rating = $row['rating'];	
 						echo "<TR align=\"center\">";
 						echo "<TD>".$movie."</TD>";
-						echo "<TD>".$genre."</TD>";
+						echo "<TD>".$rating."</TD>";
 						echo "</TR>";
 					}
 					
@@ -74,16 +73,16 @@
 				
 				else{
                 
-				$query = "SELECT movie_title,genre FROM movie GROUP BY genre";
+				$query = "SELECT m.movie_title, r.rating FROM movie AS m INNER JOIN ratings AS r ON m.id = r.movie ORDER BY r.rating DESC";
                 
 				$result = mysqli_query($db, $query);
 				
 				while($row = mysqli_fetch_array($result)) {
 					$movie = $row['movie_title'];
-  					$genre = $row['genre'];	
+  					$rating = $row['rating'];	
 					echo "<TR align=\"center\">";
 					echo "<TD>".$movie."</TD>";
-					echo "<TD>".$genre."</TD>";
+					echo "<TD>".$rating."</TD>";
 					echo "</TR>";
 				}
 				
@@ -95,20 +94,9 @@
             
             
 		</div></center>
-        
-        
-
-		<div class="col c5 alignjustify">
-			
-            
-            
-		</div>
-	</div>
-
-	<div class="row separator">
-	</div>
+	
 	<div id="footer" class="row">
-	  <div class="col c12">
+		<div class="col c12">
 			<p>&copy; 2012 Your Name<br />
 			<a href="http://andreasviklund.com/templates/freestyle/">Template design</a> by <a href="http://andreasviklund.com/">Andreas Viklund</a><br /><span class="smaller">Best hosted at <a href="https://www.svenskadomaner.se/?ref=mall&amp;ling=en" title="Svenska Domäner AB">www.svenskadomaner.se</a></span></p>
 		</div>

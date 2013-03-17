@@ -25,7 +25,7 @@
 		<div class="col c2">
 			<ul class="menu">
 				<li><a href="index.php">Home</a></li>
-				<li><a href="topmovies.html">Top Movies</a></li>
+				<li><a href="topmovies.php">Top Movies</a></li>
 				<li><a href="actors.php">Actors</a></li>
 				<li><a href="genre.php">Genre</a></li>
 				<li><a href="ratings.php">New Reviews</a></li>

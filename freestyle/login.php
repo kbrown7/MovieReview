@@ -21,7 +21,7 @@
 				<br>
 				<br>
 				<li><a href="index.php">Home</a></li>
-				<li><a href="topmovies.html">Top Movies</a></li>
+				<li><a href="topmovies.php">Top Movies</a></li>
 				<li><a href="actors.php">Actors</a></li>
 				<li><a href="genre.php">Genre</a></li>
 				<li><a href="ratings.php">New Ratings</a></li>
@@ -49,8 +49,7 @@
 			<br>
 			 <label for="password">Password:</label>
 			<input type="text" id="password" name="password" size="40" </p>
-			<p>
-			
+		 <br/>
 			<TD><FORM METHOD="post" ACTION="login.php">
 			<INPUT TYPE="submit" VALUE="Login">
 			</FORM></TD>
