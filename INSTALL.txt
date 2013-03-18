@@ -5,6 +5,5 @@ Copy MovieReview folder into htdocs folder of xampp.
 Start up xampp.
 Within shell, navigate to xampp/htdocs/MovieReview and begin mysql.
 Create a database called movies and source movies.sql file into it.
-Create a user with the following command:
-	"CREATE USER 'webuser'@'localhost' IDENTIFIED BY '12345';"
+A username of "webuser" will be created for you.
 Within your internet browser, navigate to http://localhost/MovieReview/freestyle/index.php
