@@ -3,13 +3,13 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2013 at 01:19 AM
+-- Generation Time: Mar 14, 2013 at 12:07 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
+GRANT ALL PRIVILEGES ON movies.* TO 'webuser'@'localhost' identified by '12345';
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `images` (
-  `id` int(11) NOT NULL DEFAULT '0',
+  `id` int(11) DEFAULT NULL,
   `link` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -38,6 +38,8 @@ CREATE TABLE IF NOT EXISTS `images` (
 
 INSERT INTO `images` (`id`, `link`) VALUES
 (1, 'http://content9.flixster.com/movie/11/16/77/11167739_det.jpg'),
+(2, 'http://content7.flixster.com/movie/11/16/77/11167789_det.jpg'),
+(3, 'http://content9.flixster.com/movie/11/16/83/11168351_det.jpg'),
 (4, 'http://content9.flixster.com/movie/11/17/02/11170263_det.jpg'),
 (5, 'http://content7.flixster.com/movie/27/63/276305_det.jpg'),
 (6, 'http://content7.flixster.com/movie/11/17/01/11170149_det.jpg'),
@@ -64,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `movie` (
   `MPAA` varchar(5) NOT NULL,
   `run_time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `movie`
@@ -72,6 +74,8 @@ CREATE TABLE IF NOT EXISTS `movie` (
 
 INSERT INTO `movie` (`id`, `movie_title`, `genre`, `lead_actor`, `lead_actress`, `MPAA`, `run_time`) VALUES
 (1, 'Identity Thief ', 'comedy', 'Jason Bateman', 'Melissa McCarthy', 'R', 111),
+(2, 'Safe Haven ', 'Drama', 'Josh Duhamel', 'Julianne Hough', 'PG-13', 115),
+(3, 'A Good Day to Die Hard', 'Action', 'Bruce Willis', 'Mary Elizabeth Winstead', 'R', 97),
 (4, 'The Hobbit: An Unexpected Journey', 'Science Fiction', 'Martin Freeman', 'N/A', 'PG-13', 170),
 (5, 'Gigli ', 'Drama', 'Ben Affleck', 'Jennifer Lopez', 'R', 121),
 (6, 'Hitchcock', 'Drama', 'Anthony Hopkins', 'Helen Mirren ', 'PG-13', 98),
@@ -94,7 +98,8 @@ CREATE TABLE IF NOT EXISTS `ratings` (
   `review` blob NOT NULL,
   `rating` int(11) NOT NULL,
   `review_date` date NOT NULL,
-  PRIMARY KEY (`movie`)
+  PRIMARY KEY (`movie`),
+  FOREIGN KEY (`movie`) REFERENCES movie(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -133,16 +138,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`user_id`, `user_name`, `password`) VALUES
 (1, 'admin', '348162101fc6f7e624681b7400b085eeac6df7bd');
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `ratings`
---
-ALTER TABLE `ratings`
-  ADD CONSTRAINT `ratings_ibfk_1` FOREIGN KEY (`movie`) REFERENCES `movie` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
