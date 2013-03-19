@@ -48,7 +48,7 @@
                 <?php
                 include "db_connect.php";
                 
-				$query = "SELECT movie.movie_title, ratings.rating, ratings.review FROM ratings JOIN movie WHERE movie.id = ratings.movie ";
+				$query = "SELECT movie.movie_title, ratings.rating, ratings.review FROM ratings JOIN movie ON movie.id = ratings.movie ORDER BY ratings.review_date DESC";
                 
 				$result = mysqli_query($db, $query);
 				
