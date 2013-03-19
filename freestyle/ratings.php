@@ -48,12 +48,12 @@
                 <?php
                 include "db_connect.php";
                 
-				$query = "SELECT movie, review, rating FROM ratings ORDER BY review_date DESC";
+				$query = "SELECT movie.movie_title, ratings.rating, ratings.review FROM ratings JOIN movie WHERE movie.id = ratings.movie ";
                 
 				$result = mysqli_query($db, $query);
 				
 				while($row = mysqli_fetch_array($result)) {
-					$movie = $row['movie'];
+					$movie = $row['movie_title'];
   					$review = $row['review'];	
   					$rating = $row['rating'];	
 					echo "<TR align=\"center\">";
