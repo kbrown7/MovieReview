@@ -38,8 +38,6 @@ CREATE TABLE IF NOT EXISTS `images` (
 
 INSERT INTO `images` (`id`, `link`) VALUES
 (1, 'http://content9.flixster.com/movie/11/16/77/11167739_det.jpg'),
-(2, 'http://content7.flixster.com/movie/11/16/77/11167789_det.jpg'),
-(3, 'http://content9.flixster.com/movie/11/16/83/11168351_det.jpg'),
 (4, 'http://content9.flixster.com/movie/11/17/02/11170263_det.jpg'),
 (5, 'http://content7.flixster.com/movie/27/63/276305_det.jpg'),
 (6, 'http://content7.flixster.com/movie/11/17/01/11170149_det.jpg'),
@@ -74,8 +72,6 @@ CREATE TABLE IF NOT EXISTS `movie` (
 
 INSERT INTO `movie` (`id`, `movie_title`, `genre`, `lead_actor`, `lead_actress`, `MPAA`, `run_time`) VALUES
 (1, 'Identity Thief ', 'comedy', 'Jason Bateman', 'Melissa McCarthy', 'R', 111),
-(2, 'Safe Haven ', 'Drama', 'Josh Duhamel', 'Julianne Hough', 'PG-13', 115),
-(3, 'A Good Day to Die Hard', 'Action', 'Bruce Willis', 'Mary Elizabeth Winstead', 'R', 97),
 (4, 'The Hobbit: An Unexpected Journey', 'Science Fiction', 'Martin Freeman', 'N/A', 'PG-13', 170),
 (5, 'Gigli ', 'Drama', 'Ben Affleck', 'Jennifer Lopez', 'R', 121),
 (6, 'Hitchcock', 'Drama', 'Anthony Hopkins', 'Helen Mirren ', 'PG-13', 98),
