@@ -6,4 +6,5 @@ Start up xampp.
 Within shell, navigate to xampp/htdocs/MovieReview and begin mysql.
 Create a database called movies and source movies.sql file into it.
 A username of "webuser" will be created for you.
-Within your internet browser, navigate to http://localhost/MovieReview/freestyle/index.php
+Within your internet browser, navigate to http://localhost/MovieReview/freestyle/index.php to take you to the homepage.
+To access the writeReview.php page, you must login with the username 'admin' and the password '54321'.
