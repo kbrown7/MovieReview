@@ -9,8 +9,11 @@
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-GRANT ALL PRIVILEGES ON movies.* TO 'webuser'@'localhost' identified by '12345';
 
+DROP DATABASE IF EXISTS movies;
+CREATE DATABASE IF NOT EXISTS movies;
+GRANT ALL PRIVILEGES ON movies.* TO 'webuser'@'localhost' identified by '12345';
+USE movies;
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -63,6 +66,7 @@ CREATE TABLE IF NOT EXISTS `movie` (
   `lead_actress` varchar(50) NOT NULL,
   `MPAA` varchar(5) NOT NULL,
   `run_time` int(11) NOT NULL,
+  INDEX (movie_title),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
