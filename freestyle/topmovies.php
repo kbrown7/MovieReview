@@ -54,12 +54,15 @@
 				if (isset($_POST['search'])){
 					
 					$searchterm = mysql_real_escape_string($_POST['search']);
+					/* Modified Query to Utilize a Subquery
 					$query = "SELECT m.movie_title, r.rating FROM movie AS m INNER JOIN ratings AS r ON m.id = r.movie WHERE r.rating LIKE '$searchterm' ORDER BY r.rating DESC";
+					*/
+					$query = "SELECT m.movie_title FROM movie AS m WHERE id = (SELECT r.movie FROM ratings AS r WHERE rating = '$searchterm')";
 					$result = mysqli_query($db, $query); 
 					
 					while($row = mysqli_fetch_array($result)) {
 						$movie = $row['movie_title'];
-  						$rating = $row['rating'];	
+  						$rating = $searchterm;	
 						echo "<TR align=\"center\">";
 						echo "<TD>".$movie."</TD>";
 						echo "<TD>".$rating."</TD>";
