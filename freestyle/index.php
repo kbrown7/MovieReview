@@ -79,7 +79,6 @@
 					$searchterm = mysql_real_escape_string($_POST['search']);
 					$query = "SELECT movie.movie_title, movie.genre, movie.lead_actor, movie.lead_actress, movie.MPAA, movie.run_time, ratings.review, ratings.rating, images.link FROM movie LEFT JOIN ratings ON movie.id=ratings.movie LEFT JOIN images ON images.id=movie.id WHERE movie.movie_title = '$searchterm'";
 					$result = mysqli_query($db, $query); 
-					//echo $query;
 					while($row = mysqli_fetch_array($result)) {
 						$movie = $row['movie_title'];
   						$genre = $row['genre'];	
@@ -98,15 +97,7 @@
 						echo "<h3>Rating:</h3> ".$rating." /10";
 						echo "<h3>Review:</h3> ".$review;
 						echo "<div id=\"apDiv1\"><img src=\"".$image."\"></div>";
-						/*
-						echo "<TD>".$genre."</TD>";
-						echo "<TD>".$leadactor."</TD>";
-						echo "<TD>".$leadactress."</TD>";
-						echo "<TD>".$mpaa."</TD>";
-						echo "<TD>".$runtime."</TD>";
-						echo "<TD>".$review."</TD>";
-						echo "<TD>".$rating."</TD>";
-						*/
+					
 					}
 					
 				}//end if
